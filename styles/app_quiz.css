@@ -14,7 +14,7 @@
   
   body {
     /*background-color: var(--body-bg);*/
-    background: linear-gradient(to right, #0e0e0e, #3e3e3e); /* Gradient background */
+    background: linear-gradient(to right, #0e0e0e, #272727); /* Gradient background *//
     min-height: 100vh;
     display: grid;
     place-items: center;
