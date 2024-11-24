@@ -176,9 +176,17 @@ function displayResults() {
 }
 
 function restartQuiz() {
-    currentQuestionIndex = 0; // Reset current question index
-    correctAnswersCount = 0; // Reset correct answers count
-    handleQuestion(currentQuestionIndex); // Start the quiz over
+    // Clear the question and answer containers
+    quizProgress.innerHTML = "";
+    questionContainer.innerHTML = "";
+    answerContainer.innerHTML = "";
+    
+    // Reset current question index and correct answers count
+    currentQuestionIndex = 0;
+    correctAnswersCount = 0;
+    
+    // Display the title of the quiz again
+    displayTitle();
 }
 
 function main(){
