@@ -16,7 +16,7 @@ const questions = [
         topic: 'Consent',
         question:  "Which of the following statements are not true about consent?",
         possibleAnswers: [
-            'Consent can be given verbally or non-verbally', 
+            'Consent requires understanding', 
             'Consent is valid if one person is intoxicated', 
             'Consent should be obtained every time despite relationship status', 
             'Consent can be revoked at anytime'
