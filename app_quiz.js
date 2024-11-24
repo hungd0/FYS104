@@ -144,7 +144,7 @@ function handleQuestion(index) {
             answers.forEach((btn) => btn.disabled = true);
 
             // add "Next Question" button
-            answerContainer.innerHTML += `<button id="nextButton">Next Question</button>`;
+            answerContainer.innerHTML += `<button id="nextButton">Next</button>`;
             let nextButton = document.getElementById("nextButton");
             nextButton.addEventListener("click", () => {
                 if (currentQuestionIndex === questions.length - 1) {
