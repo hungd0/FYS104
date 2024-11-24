@@ -52,7 +52,7 @@ const questions = [
             "Academic advising", 
             "The Women's Center", 
             "The campus bookstore", 
-            "The dining hall"
+            "True Grit's"
         ],
         correctAnswer: "The Women's Center"
     },
@@ -117,12 +117,12 @@ function handleQuestion(index) {
     answerContainer.innerHTML = "";
     let answersToDisplay = [...questions[index].possibleAnswers]; // Copy the answers array
 
-    // Shuffle answers if it's not the 4th question (index 3)
+    // shuffle answers if it's not the 4th question (index 3)
     if (index !== 3) {
         shuffleArray(answersToDisplay);
     }
 
-    // Display answers
+    // display answers
     answersToDisplay.forEach((answer) => {
         answerContainer.innerHTML += `<button>${answer}</button>`;
     });
@@ -130,18 +130,30 @@ function handleQuestion(index) {
     let answers = document.querySelectorAll("button");
     answers.forEach((answer) => {
         answer.addEventListener("click", (e) => {
-        if (e.target.textContent === questions[index].correctAnswer) {
-            console.log("correct! ");
-            correctAnswersCount++;
-        } else {
-            console.log("wrong");
-        }
-        if (currentQuestionIndex === questions.length - 1) {
-            displayResults(); // show restults
-        } else {
-            currentQuestionIndex++;
-            handleQuestion(currentQuestionIndex);
-        }
+            // show whether the answer is correct or wrong
+            if (e.target.textContent === questions[index].correctAnswer) {
+                console.log("correct! ");
+                correctAnswersCount++;
+                answerContainer.innerHTML += `<p style="color: lime; text-align: center;">Correct! The answer is: ${questions[index].correctAnswer}</p>`;
+            } else {
+                console.log("wrong");
+                answerContainer.innerHTML += `<p style="color: red; text-align: center;">Wrong! The correct answer is: ${questions[index].correctAnswer}</p>`;
+            }
+
+            // disable all answer buttons after an answer is selected
+            answers.forEach((btn) => btn.disabled = true);
+
+            // add "Next Question" button
+            answerContainer.innerHTML += `<button id="nextButton">Next Question</button>`;
+            let nextButton = document.getElementById("nextButton");
+            nextButton.addEventListener("click", () => {
+                if (currentQuestionIndex === questions.length - 1) {
+                    displayResults(); // show results
+                } else {
+                    currentQuestionIndex++;
+                    handleQuestion(currentQuestionIndex);
+                }
+            });
         });
     });
 }
